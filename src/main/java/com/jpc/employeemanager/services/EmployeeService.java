@@ -1,5 +1,6 @@
 package com.jpc.employeemanager.services;
 
+import com.jpc.employeemanager.exception.UserNotFoundException;
 import com.jpc.employeemanager.model.Employee;
 import com.jpc.employeemanager.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id){
-        return employeeRepo.findEmployeeById(id);
+        return employeeRepo.findEmployeeById(id).orElseThrow(()-> new UserNotFoundException("User by id "+id+" was not found"));
     }
 
     public void deleteEmployee(Long id){
