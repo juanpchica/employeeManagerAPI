@@ -1,5 +1,7 @@
 package com.jpc.employeemanager.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,7 +9,9 @@ import java.io.Serializable;
 @Table(name = "Employees")
 public class Employee implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "guid")
+
     @Column(nullable = false,updatable = false)
     private Long id;
     private String name;
