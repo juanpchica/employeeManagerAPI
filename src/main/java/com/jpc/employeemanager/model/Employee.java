@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Table(name = "Employees")
 public class Employee implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "guid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
 
     @Column(nullable = false,updatable = false)
     private Long id;
